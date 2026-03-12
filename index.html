@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Watermark PDF files</title>
+  </head>
+  <body>
+    <script type="module" src="./script.js"></script>
+
+    <label for="text">Input your mark:</label>
+    <input type="text" id="mark"/>
+
+    <label for="file">Choose file to upload:</label>
+    <input type="file" id="file" accept=".pdf" onchange="watermark()" />
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
