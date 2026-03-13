@@ -23,7 +23,10 @@ npx vite
 
 ## Ideas for improvement
 
-- Customise watermark (font size and color, spacing...)
 - Handle PNG and JPG
 - Docker
+
+## License
+
+Released under [GNU General Public License version 2 only](LICENSE)
 

@@ -8,7 +8,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
 
 import { jsPDF } from "jspdf";
 
-async function watermarkPage(page, context) {
+async function watermarkPage(page, context, markOptions) {
   var viewport = await page.getViewport({scale: 1});
 
   canvas.width = viewport.width;
@@ -25,21 +25,37 @@ async function watermarkPage(page, context) {
   
   // Add a watermark
   context.rotate(-0.2 * Math.PI);
-  context.fillStyle = "rgb(200 0 0 / 40%)";
-  context.font = "24px Arial";
+  context.fillStyle = "rgb(" + markOptions.red + " " +
+    markOptions.green + " " + markOptions.blue + " / " +
+    markOptions.alpha + "%)";
+  context.font = markOptions.fontSize + "px Arial";
 
-  var mark = document.getElementById('mark').value.concat("     ").repeat(20);
-  var step = 100;
-
-  for (let i = 1; i * step / 2 < canvas.height; i++) {
-    context.fillText(mark, -100 * i, 100 * i);
+  for (let i = 1; i * markOptions.lineSpacing / 2 < canvas.height; i++) {
+    context.fillText(
+      markOptions.mark.concat("     ").repeat(markOptions.markRepetition),
+      -1 * i * markOptions.lineSpacing, i * markOptions.lineSpacing);
   }
 
 }
 
 async function watermark(){
+
+  // Get config
+  var markOptions = {
+      mark: document.getElementById('mark').value,
+      red: document.getElementById('red').value,
+      green: document.getElementById('green').value,
+      blue: document.getElementById('blue').value,
+      alpha: document.getElementById('alpha').value,
+      fontSize: document.getElementById('fontSize').value,
+      lineSpacing: document.getElementById('lineSpacing').value,
+      markRepetition: document.getElementById('markRepetition').value,
+  }
+
+  // Read file
   var fileInput = document.getElementById("file");
   var [file] = fileInput.files;
+
   if (file) {
     if (file.type === "application/pdf") {
 
@@ -61,7 +77,7 @@ async function watermark(){
       // Process each page
       for (let i = 1; i <= pdfDocument.numPages ; i++) {
         var page = await pdfDocument.getPage(i);
-        await watermarkPage(page, context);
+        await watermarkPage(page, context, markOptions);
 
         // Bypass orientation issues
         if (canvas.width < canvas.height) {

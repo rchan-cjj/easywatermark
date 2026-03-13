@@ -11,6 +11,29 @@
 
     <label for="file">Choose file to upload:</label>
     <input type="file" id="file" accept=".pdf" onchange="watermark()" />
+    <details>
+      <summary>Optional parameters</summary>
+      <div>
+        Color: 
+        <label for="red">R: </label>
+        <input type="number" id="red" min="0" max="255" value="200" />
+        <label for="green">G: </label>
+        <input type="number" id="green" min="0" max="255" value="0" />
+        <label for="blue">B: </label>
+        <input type="number" id="blue" min="0" max="255" value="0" />
+        <label for="alpha">A: </label>
+        <input type="number" id="alpha" min="0" max="100" value="40" />
+      </div>
+      <div>
+        Mark:
+        <label for="fontSize">Font size: </label>
+        <input type="number" id="fontSize" min="0" max="100" value="24" />
+        <label for="lineSpacing">Line spacing: </label>
+        <input type="number" id="lineSpacing" min="0" max="100" value="100" />
+        <label for="markRepetition">Token repetition: </label>
+        <input type="number" id="markRepetition" min="0" max="100" value="20" />
+      </div>
+    </details>
     <canvas id="canvas" hidden></canvas>
   </body>
 </html>
