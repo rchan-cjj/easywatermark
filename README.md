@@ -6,6 +6,16 @@ It is designed to add a layer of protection to identity documents against reuse.
 
 Inspired by [FiligraneFacile](https://filigrane.beta.gouv.fr/), but unlike the latter, it does not upload your files to a remote server. 
 
+## Architecture
+
+Client-side web technologies only to provide privacy and compatibility.
+
+![Architecture](doc/architecture.png)
+
+## Example
+
+![Example](doc/example.png)
+
 ## Run
 
 Tested on Node v20.19.2.
@@ -25,10 +35,25 @@ npx vite
 
 ```
 
+## Credits
+
+Build
+- [Node](https://nodejs.org/)
+- [Vite](https://vite.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+Libraries
+- [PDF.js](https://github.com/mozilla/pdf.js)
+- [jsPDF](https://github.com/parallax/jsPDF)
+
+Icons
+- [icons8.com](https://icons8.com/)
+
 ## Ideas for improvement
 
 - UX (error messages, interface...)
 - Hosted service
+- Internationalisation
 
 ## License
 
