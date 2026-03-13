@@ -19,12 +19,15 @@ npm install
 # Run locally
 npx vite
 
+# Run with Docker
+. docker.sh
+. test_docker.sh
+
 ```
 
 ## Ideas for improvement
 
 - Handle PNG and JPG
-- Docker
 
 ## License
 
