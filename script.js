@@ -8,22 +8,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
 
 import { jsPDF } from "jspdf";
 
-async function watermarkPage(page, context, markOptions) {
-  var viewport = await page.getViewport({scale: 1});
-
-  canvas.width = viewport.width;
-  canvas.height = viewport.height;
-  canvas.style.width = viewport.width + "px";
-  canvas.style.height =  viewport.height + "px";
-
-  var renderContext = {
-    canvasContext: context,
-    viewport: viewport,
-  };
-
-  await page.render(renderContext).promise;
+async function watermarkCanvas(canvas, context, markOptions) {
   
-  // Add a watermark
   context.rotate(-0.2 * Math.PI);
   context.fillStyle = "rgb(" + markOptions.red + " " +
     markOptions.green + " " + markOptions.blue + " / " +
@@ -52,32 +38,54 @@ async function watermark(){
       markRepetition: document.getElementById('markRepetition').value,
   }
 
+  // Get canvas
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+
   // Read file
   var fileInput = document.getElementById("file");
   var [file] = fileInput.files;
 
+  // File name without its 3-letter extension
+  // The file name is prefixed with "C:\fakepath\"
+  var fileName = fileInput.value.slice(12, -4);
+
   if (file) {
+
+    // Init marked PDF file
+    var pdfOptions = {
+      unit: 'px',
+      putOnlyUsedFonts:true
+    } 
+    var markedPdfDocument = new jsPDF(pdfOptions);
+    markedPdfDocument.deletePage(1);
+
     if (file.type === "application/pdf") {
 
       // Read PDF file
       var arrayBuffer = await file.arrayBuffer();
       var pdfDocument = await pdfjsLib.getDocument(arrayBuffer).promise;
 
-      var canvas = document.getElementById('canvas');
-      var context = canvas.getContext('2d');
-
-      // Init marked PDF file
-      var pdfOptions = {
-        unit: 'px',
-        putOnlyUsedFonts:true
-      } 
-      var markedPdfDocument = new jsPDF(pdfOptions);
-      markedPdfDocument.deletePage(1);
-
       // Process each page
       for (let i = 1; i <= pdfDocument.numPages ; i++) {
+
+        // Get page and page size
         var page = await pdfDocument.getPage(i);
-        await watermarkPage(page, context, markOptions);
+        var viewport = await page.getViewport({scale: 1});
+
+        // Resize canvas
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        // Draw canvas
+        var renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+        await page.render(renderContext).promise;
+
+        // Add a watermark
+        await watermarkCanvas(canvas, context, markOptions);
 
         // Bypass orientation issues
         if (canvas.width < canvas.height) {
@@ -94,14 +102,32 @@ async function watermark(){
         );
       }
 
-      // The file name is prefixed with "C:\fakepath\"
-      var fileName = fileInput.value.slice(12, -4);
+      // Save watermaked file
       markedPdfDocument.save(fileName + '_watermarked.pdf');
 
-      // Clean up
-      context.setTransform(1, 0, 0, 1, 0, 0);
-      context.clearRect(0, 0, canvas.width, canvas.height);
+    } else if (file.type === "image/png" || file.type === "image/jpeg") {
+      // Read PNG or JPG file
+      var imageBitmap = await createImageBitmap(file);
+
+      // Resize canvas
+      canvas.width = imageBitmap.width;
+      canvas.height = imageBitmap.height;
+
+      // Draw canvas
+      context.drawImage(imageBitmap, 0, 0);
+
+      // Add a watermark
+      await watermarkCanvas(canvas, context, markOptions);
+
+      // Save watermaked file
+      open(canvas.toDataURL());
+
     }
+
+    // Clean canvas
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
   }
 }
 

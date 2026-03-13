@@ -1,6 +1,6 @@
-# watermark-pdf
+# EasyWatermark
 
-A Node.js server to watermark PDF documents locally.
+A web service to watermark documents locally. Supports PDF, PNG and JPG files.
 
 It is designed to add a layer of protection to identity documents against reuse.
 
@@ -27,7 +27,8 @@ npx vite
 
 ## Ideas for improvement
 
-- Handle PNG and JPG
+- UX (error messages, interface...)
+- Hosted service
 
 ## License
 

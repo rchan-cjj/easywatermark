@@ -10,7 +10,7 @@
     <input type="text" id="mark"/>
 
     <label for="file">Choose file to upload:</label>
-    <input type="file" id="file" accept=".pdf" onchange="watermark()" />
+    <input type="file" id="file" accept=".pdf,.png, .jpg" onchange="watermark()" />
     <details>
       <summary>Optional parameters</summary>
       <div>
@@ -35,5 +35,8 @@
       </div>
     </details>
     <canvas id="canvas" hidden></canvas>
+    <footer>
+      <a href="https://github.com/rchan-cjj/easywatermark">Source code</a>
+    </footer>
   </body>
 </html>
