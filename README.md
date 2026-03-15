@@ -12,6 +12,8 @@ Client-side web technologies only to provide privacy and compatibility.
 
 ![Architecture](doc/architecture.png)
 
+The format of files stays the same during processing.
+
 ## Example
 
 ![Example](doc/example.png)
@@ -51,9 +53,9 @@ Icons
 
 ## Ideas for improvement
 
-- UX (error messages, interface...)
-- Hosted service
 - Internationalisation
+- Hosted service and sponsor
+- <input type="color"> is not fully supported on most browsers (value, alpha, colorspace)
 
 ## License
 

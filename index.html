@@ -2,41 +2,53 @@
 <html>
   <head>
     <title>Watermark PDF files</title>
+    <link href="/style.css" rel="stylesheet">
   </head>
-  <body>
-    <script type="module" src="./script.js"></script>
-
-    <label for="text">Input your mark:</label>
-    <input type="text" id="mark"/>
-
-    <label for="file">Choose file to watermark:</label>
-    <input type="file" id="file" accept=".pdf,.png, .jpg" onchange="watermark()" />
-    <details>
-      <summary>Optional parameters</summary>
-      <div>
-        Color: 
-        <label for="red">R: </label>
-        <input type="number" id="red" min="0" max="255" value="200" />
-        <label for="green">G: </label>
-        <input type="number" id="green" min="0" max="255" value="0" />
-        <label for="blue">B: </label>
-        <input type="number" id="blue" min="0" max="255" value="0" />
-        <label for="alpha">A: </label>
-        <input type="number" id="alpha" min="0" max="100" value="40" />
+  <body class="mx-2 mt-2">
+    <script type="module" src="script.js"></script>
+    <div>
+      <div class="mt-1">
+        <div class="mt-1">
+          <label for="text">Input your mark:</label>
+          <input type="text" id="mark" class="border"/>
+        </div>
+        <div class="mt-1">
+          <label for="file">Choose file to watermark:</label>
+          <input type="file" id="file" accept=".pdf,.png, .jpg" onchange="watermark()"
+            class="file:cursor-pointer file:border file:rounded file:border-gray-600 file:bg-gray-200"/>
+        </div>
       </div>
-      <div>
-        Mark:
-        <label for="fontSize">Font size: </label>
-        <input type="number" id="fontSize" min="0" max="100" value="24" />
-        <label for="lineSpacing">Line spacing: </label>
-        <input type="number" id="lineSpacing" min="0" max="100" value="100" />
-        <label for="markRepetition">Token repetition: </label>
-        <input type="number" id="markRepetition" min="0" max="100" value="20" />
+      <details class="mt-1">
+        <summary class="mt-1">Options</summary>
+        <ul class="list-disc list-inside">
+          <li class="mt-1">
+            Color: 
+            <label for="red">R: </label>
+            <input type="number" id="red" min="0" max="255" value="200" class="border"/>
+            <label for="green">G: </label>
+            <input type="number" id="green" min="0" max="255" value="0" class="border"/>
+            <label for="blue">B: </label>
+            <input type="number" id="blue" min="0" max="255" value="0" class="border"/>
+            <label for="alpha">A: </label>
+            <input type="number" id="alpha" min="0" max="100" value="40" class="border"/>
+          </li>
+          <li class="mt-1">
+            Mark:
+            <label for="fontSize">Font size: </label>
+            <input type="number" id="fontSize" min="0" max="100" value="24" class="border"/>
+            <label for="lineSpacing">Line spacing: </label>
+            <input type="number" id="lineSpacing" min="0" max="100" value="100" class="border"/>
+            <label for="markRepetition">Token repetition: </label>
+            <input type="number" id="markRepetition" min="0" max="100" value="20" class="border"/>
+          </li>
+        </ul>
+      </details>
+      <canvas id="canvas" hidden></canvas>
+    </div>
+    <footer class="mt-2 w-full border-t">
+      <div class="mt-1">
+        <a href="https://github.com/rchan-cjj/easywatermark" class="hover:underline">Source code</a>
       </div>
-    </details>
-    <canvas id="canvas" hidden></canvas>
-    <footer>
-      <a href="https://github.com/rchan-cjj/easywatermark">Source code</a>
     </footer>
   </body>
 </html>
