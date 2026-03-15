@@ -1,0 +1,11 @@
+{
+  "mark": "Saisissez le filigrane:",
+  "file": "Sélectionnez le fichier à marquer:",
+  "options": "Options",
+  "color": "Couleur:",
+  "markOptions": "Filigrane:",
+  "fontSize": "Taille de police:",
+  "lineSpacing": "Espacement",
+  "markRepetition": "Répétition du motif:",
+  "sourceCode": "Code source"
+}

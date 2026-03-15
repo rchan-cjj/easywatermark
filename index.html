@@ -3,26 +3,36 @@
   <head>
     <title>Watermark PDF files</title>
     <link href="/style.css" rel="stylesheet">
+    <meta charset="utf-8" />
   </head>
-  <body class="mx-2 mt-2">
-    <script type="module" src="script.js"></script>
+  <script type="module" src="watermark.js"></script>
+  <body class="mx-2">
+    <header class="mt-1">
+      <nav>
+        <button popovertarget="language" class="w-fit px-1 border rounded border-gray-600 bg-blue-100 hover:cursor-pointer hover:bg-blue-200">Language</button>
+        <div popover id="language" class="inset-auto">
+          <a href="/?lang=en" class="language">English</a>
+          <a href="/?lang=fr" class="language">Français</a>
+        </div>
+      </nav>
+    </header>
     <div>
       <div class="mt-1">
         <div class="mt-1">
-          <label for="text">Input your mark:</label>
+          <label for="text" id="i18n-mark">Input your mark:</label>
           <input type="text" id="mark" class="border"/>
         </div>
         <div class="mt-1">
-          <label for="file">Choose file to watermark:</label>
+          <label for="file" id="i18n-file">Choose file to watermark:</label>
           <input type="file" id="file" accept=".pdf,.png, .jpg" onchange="watermark()"
             class="file:cursor-pointer file:border file:rounded file:border-gray-600 file:bg-gray-200"/>
         </div>
       </div>
       <details class="mt-1">
-        <summary class="mt-1">Options</summary>
+        <summary class="mt-1" id="i18n-options">Options</summary>
         <ul class="list-disc list-inside">
           <li class="mt-1">
-            Color: 
+            <span id="i18n-color">Color:</span>
             <label for="red">R: </label>
             <input type="number" id="red" min="0" max="255" value="200" class="border"/>
             <label for="green">G: </label>
@@ -33,22 +43,23 @@
             <input type="number" id="alpha" min="0" max="100" value="40" class="border"/>
           </li>
           <li class="mt-1">
-            Mark:
-            <label for="fontSize">Font size: </label>
+            <span id="i18n-markOptions">Mark:</span>
+            <label for="fontSize" id="i18n-fontSize">Font size:</label>
             <input type="number" id="fontSize" min="0" max="100" value="24" class="border"/>
-            <label for="lineSpacing">Line spacing: </label>
+            <label for="lineSpacing" id="i18n-lineSpacing">Line spacing:</label>
             <input type="number" id="lineSpacing" min="0" max="100" value="100" class="border"/>
-            <label for="markRepetition">Token repetition: </label>
+            <label for="markRepetition" id="i18n-markRepetition">Token repetition:</label>
             <input type="number" id="markRepetition" min="0" max="100" value="20" class="border"/>
           </li>
         </ul>
       </details>
       <canvas id="canvas" hidden></canvas>
     </div>
-    <footer class="mt-2 w-full border-t">
+    <footer class="my-1 w-full border-t">
       <div class="mt-1">
-        <a href="https://github.com/rchan-cjj/easywatermark" class="hover:underline">Source code</a>
+        <a href="https://github.com/rchan-cjj/easywatermark" class="hover:underline" id="i18n-sourceCode">Source code</a>
       </div>
     </footer>
   </body>
+  <script type="module" src="i18n.js"></script>
 </html>

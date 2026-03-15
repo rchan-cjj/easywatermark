@@ -53,9 +53,8 @@ Icons
 
 ## Ideas for improvement
 
-- Internationalisation
 - Hosted service and sponsor
-- <input type="color"> is not fully supported on most browsers (value, alpha, colorspace)
+- `<input type="color">` is not fully supported on most browsers (value, alpha, colorspace)
 
 ## License
 

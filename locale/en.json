@@ -1,0 +1,11 @@
+{
+  "mark": "Input your mark:",
+  "file": "Choose file to watermark:",
+  "options": "Options",
+  "color": "Color:",
+  "markOptions": "Mark:",
+  "fontSize": "Font size:",
+  "lineSpacing": "Line spacing:",
+  "markRepetition": "Token repetition:",
+  "sourceCode": "Source code"
+}
