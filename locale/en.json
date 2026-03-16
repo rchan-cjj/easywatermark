@@ -1,4 +1,5 @@
 {
+  "description": "Easywatermark is an open-source tool for watermarking your documents.<br/>It respects your privacy since it works offline.",
   "mark": "Input your mark:",
   "file": "Choose file to watermark:",
   "options": "Options",

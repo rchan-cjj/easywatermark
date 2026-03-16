@@ -1,6 +1,6 @@
 # EasyWatermark
 
-A web service to watermark documents locally. Supports PDF, PNG and JPG files.
+A web tool to watermark documents locally. Supports PDF, PNG and JPG files.
 
 It is designed to add a layer of protection to identity documents against reuse.
 

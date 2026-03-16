@@ -1,4 +1,5 @@
 {
+  "description": "Easywatermark est un outil en source ouverte pour ajouter un filigrane sur vos documents.<br/>Il respecte votre vie privée puisqu'il fonctionne hors ligne.",
   "mark": "Saisissez le filigrane:",
   "file": "Sélectionnez le fichier à marquer:",
   "options": "Options",

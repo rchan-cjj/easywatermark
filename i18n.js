@@ -14,6 +14,7 @@ var searchParams = new URLSearchParams(window.location.search);
 if (searchParams.has("lang")) {
   await i18next.changeLanguage(searchParams.get("lang"))
 
+  document.getElementById('i18n-description').innerHTML = i18next.t('description');
   document.getElementById('i18n-mark').innerHTML = i18next.t('mark');
   document.getElementById('i18n-file').innerHTML = i18next.t('file');
   document.getElementById('i18n-options').innerHTML = i18next.t('options');
