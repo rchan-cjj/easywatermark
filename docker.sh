@@ -6,3 +6,6 @@ cp -r locale dist
 image="${PWD##*/}"
 sudo docker build -t $image .
 
+# Test
+sudo docker run -p 8080:80 $image
+

@@ -33,7 +33,6 @@ npx vite
 
 # Run with Docker
 . docker.sh
-. test_docker.sh
 
 ```
 
@@ -53,8 +52,7 @@ Icons
 
 ## Ideas for improvement
 
-- Hosted service and sponsor
-- `<input type="color">` is not fully supported on most browsers (value, alpha, colorspace)
+- Color picker but `<input type="color">` is not fully supported on most browsers (value, alpha, colorspace)
 
 ## License
 
