@@ -1,8 +1,5 @@
 # Prerequisites
-sudo apt install git nodejs npm nginx python3-certbot-nginx
-
-# HTTPS
-sudo certbot run -d easywatermark.ovh,www.easywatermark.ovh
+sudo apt install git nodejs npm
 
 # Synchronise project
 git pull
