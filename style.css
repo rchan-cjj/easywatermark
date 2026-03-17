@@ -2,6 +2,6 @@
 
 @layer components {
   .language {
-    @apply block px-1 hover:bg-blue-200;
+    @apply block px-1 hover:bg-blue-200 dark:bg-black dark:text-white dark:hover:bg-blue-600;
   }
 }

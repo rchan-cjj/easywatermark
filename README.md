@@ -54,7 +54,7 @@ Icons
 
 - Color picker but `<input type="color">` is not fully supported on most browsers (value, alpha, colorspace)
 - `onchange` event is not triggered by Safari on iOS after a file is selected
-- Dark mode
+- Toggle for dark mode
 
 ## License
 
